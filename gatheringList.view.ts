@@ -7,9 +7,9 @@ export function renderGatheringList(
   gatherings: Gatherings,
   container: HTMLElement
 ) {
-  container.innerHTML = `<ul>
+  container.innerHTML = `<div>
             ${gatherings.map(renderGathering).join("\n")}
-        </ul>`;
+        </div>`;
 
   container
     .querySelectorAll("form")
@@ -17,8 +17,10 @@ export function renderGatheringList(
 }
 
 function renderGathering(gathering: Gathering) {
-  return `<li>
-        <p><span>Title:</span> ${gathering.title}</p>
+  return `
+          <p class="gatheringElements"><span>Title:</span> ${
+            gathering.title
+          }</p>
         <p>Duration: ${gathering.durationInHours} ${
           gathering.durationInHours === 1 ? "hour" : "hours"
         }.</p>
@@ -34,10 +36,10 @@ function renderGathering(gathering: Gathering) {
                 required />
             <button>Attend</button>
         </form>
-        <ul>
+        <div>
             ${gathering.attendants
               .map((attendant) => `<li>${attendant}</li>`)
               .join("\n")}
-        </ul>
-    </li>`;
+        </div>
+`;
 }

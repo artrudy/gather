@@ -1,20 +1,29 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
+  margin: 0;
 }
 
 html {
-    font-size: calc(1rem + 0.5vw);
-    line-height: 1.6;
+  font-size: calc(1rem + 0.5vw);
+  line-height: 1.6;
+  #logo,
+  #slogan {
+    color: teal;
+  }
+
+  #slogan {
+    font-size: 0.8rem;
+  }
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: aliceblue;
 }
 
 h1,
@@ -23,5 +32,9 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: 1.2;
+  line-height: 1.2;
+}
+
+#gathering-list {
+  display: grid;
 }
