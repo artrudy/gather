@@ -14,7 +14,7 @@ const typescriptMeetupId = Gatherings.createGathering({
     organizer: "Omer",
     participantLimit: 10,
     startTime: new Date(),
-    title: "Typescript Meetup"
+    title: "Typescript Meetup",
 });
 for (let i = 0; i < 10000; i++) {
     try {
@@ -28,9 +28,9 @@ Gatherings.createGathering({
     durationInHours: 1.5,
     location: "Ramat-Gan",
     organizer: "Gilad",
-    participantLimit: 15,
+    participantLimit: 5,
     startTime: new Date(),
-    title: "Fullstack Practice"
+    title: "Fullstack Practice",
 });
 console.log("reached participant limit");
 console.log(Gatherings.getGatherings());

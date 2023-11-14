@@ -3,11 +3,46 @@
 import { Gathering, Gatherings } from "./gathering.model.js";
 import { onSubmitAttendance } from "./gatheringList.controller.js";
 
+const addGatherBtn = document.createElement("button");
+addGatherBtn.textContent = "+create new Gather";
+addGatherBtn.addEventListener("click", () => {
+  addGather();
+});
+document.querySelector("#header")?.appendChild(addGatherBtn);
+
+function addGather() {
+  console.log("+");
+}
+
+function attedantsForm(gathering: Gathering) {
+  if (gathering.attendants.length < gathering.participantLimit) {
+    return `<form data-gathering-id="${gathering.id}">
+            <label for="${gathering.id}-attend-input">Name</label>
+            <input
+                id="${gathering.id}-attend-input"
+                name="attendant"
+                required />
+            <button>Attend</button>
+        </form>`;
+  } else {
+    return `The list of attendants is closed.`;
+  }
+}
+
+// <form data-gathering-id="${gathering.id}">
+//             <label for="${gathering.id}-attend-input">Name</label>
+//             <input
+//                 id="${gathering.id}-attend-input"
+//                 name="attendant"
+//                 required />
+//             <button>Attend</button>
+//         </form>
+
 export function renderGatheringList(
   gatherings: Gatherings,
   container: HTMLElement
 ) {
-  container.innerHTML = `<div>
+  container.innerHTML = `<div class='elements'>
             ${gatherings.map(renderGathering).join("\n")}
         </div>`;
 
@@ -17,7 +52,7 @@ export function renderGatheringList(
 }
 
 function renderGathering(gathering: Gathering) {
-  return `
+  return `<div> 
           <p class="gatheringElements"><span>Title:</span> ${
             gathering.title
           }</p>
@@ -28,18 +63,14 @@ function renderGathering(gathering: Gathering) {
         <p> Organizer: ${gathering.organizer}.</p>
         <p>Start time: ${gathering.startTime.getDate()}.${gathering.startTime.getMonth()}.${gathering.startTime.getFullYear()} at ${gathering.startTime.getHours()}:${gathering.startTime.getMinutes()}.</p>
         <p>Attendants (${gathering.attendants.length})</p>
-        <form data-gathering-id="${gathering.id}">
-            <label for="${gathering.id}-attend-input">Name</label>
-            <input
-                id="${gathering.id}-attend-input"
-                name="attendant"
-                required />
-            <button>Attend</button>
-        </form>
+        
         <div>
             ${gathering.attendants
               .map((attendant) => `<li>${attendant}</li>`)
               .join("\n")}
         </div>
+        ${attedantsForm(gathering)}
+
+    </div>
 `;
 }

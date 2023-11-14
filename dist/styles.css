@@ -34,6 +34,11 @@ h6 {
   line-height: 1.2;
 }
 
-#gathering-list {
-  display: grid;
+.elements {
+  margin: 1rem;
+  display: flex;
+}
+
+#header {
+  margin: 1rem 1rem;
 }
